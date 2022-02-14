@@ -1,48 +1,25 @@
+<!--
+ * @Date: 2022-02-14 09:13:09
+ * @LastEditors: zhaozc
+ * @LastEditTime: 2022-02-14 11:01:18
+ * @FilePath: \uni-vue3-js-template\src\pages\index\index.vue
+-->
 <template>
-  <view class="content">
-    <image class="logo" src="/static/logo.png"></image>
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
-    </view>
-  </view>
+    <layout>
+        <u-button ripple>十年之约</u-button>
+    </layout>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      title: 'Hello',
-    }
-  },
-  onLoad() {},
-  methods: {},
+    data() {
+        return {
+            title: 'Hello'
+        }
+    },
+    onLoad() {},
+    methods: {}
 }
 </script>
 
-<style>
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
-}
-</style>
+<style lang="scss"></style>
