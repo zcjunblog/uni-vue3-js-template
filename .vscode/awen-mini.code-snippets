@@ -1,0 +1,61 @@
+{
+    "awen": {
+        "prefix": "awen",
+        "body": [
+            "// 页面描述",
+            "<template>",
+            "  <view class=\"\"></view>",
+            "</template>",
+            "",
+            "<script>",
+            "/**",
+            "* @name 页面名称",
+            "* 页面接收参数",
+            "* 必传",
+            "* @param paramName     参数名称 1-阿闻到家；2-商城；",
+            "* ",
+            "* 非必选",
+            "* @param paramName     参数名称 1-阿闻到家；2-商城；",
+            "* 返回",
+            "* @returns emit        组件暴露出去的方法",
+            "*/",
+            "export default {",
+            "  components:{},",
+            "  data() { ",
+            "    return {}",
+            "  },",
+            "  computed: {},",
+            "  watch: {},",
+            "  onLoad() {},",
+            "  onShow() {},",
+            "  onHide() {},",
+            "  onUnload() {},",
+            "  methods:{",
+            "  },",
+            " }",
+            "</script>",
+            "",
+            "<style lang=\"less\" scoped>",
+            "",
+            "</style>"
+        ],
+        "description": "awen mini vue template"
+    },
+    "com": {
+        "prefix": "com",
+        "body": [
+            "/**",
+            "* @name 页面名称",
+            "* 页面接收参数",
+            "* 必传",
+            "* @param paramName     参数名称 1-阿闻到家；2-商城；",
+            "* ",
+            "* 非必选",
+            "* @param paramName     参数名称 1-阿闻到家；2-商城；",
+            "* 返回",
+            "* @returns emit        组件暴露出去的方法",
+            "*/"
+        ],
+        "description": "comment mini vue template"
+    }
+}
