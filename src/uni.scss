@@ -1,0 +1,13 @@
+// 注: uni.scss只存放scss变量名相关样式，其他的样式可以通过main.js或者App.vue引入
+@import "@/uni_modules/uview-ui/theme.scss";
+
+// 主题色简写
+$theme: #42bda2;
+$theme-light: #ecf8f5;
+$theme-dark: #178f75;
+
+// 覆盖uView主要色
+$u-type-primary: $theme;
+$u-type-primary-light: $theme-light;
+$u-type-primary-disabled: $theme-light;
+$u-type-primary-dark: $theme-dark;

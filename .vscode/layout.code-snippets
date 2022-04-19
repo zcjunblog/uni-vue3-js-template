@@ -1,0 +1,48 @@
+{
+    "layout": {
+        "prefix": "layout",
+        "body": [
+            "<template>",
+            "  <Layout></Layout>",
+            "</template>",
+            "",
+            "<script setup lang=\"ts\">",
+            "/**",
+            "* @name 页面名称",
+            "* 页面路由接收参数",
+            "* @param paramName     参数名称",
+            "*/",
+            "import { onMounted, ref } from 'vue'",
+            "onMounted(() => {})",
+            "</script>",
+            "",
+            "<style lang=\"scss\" scoped>",
+            "",
+            "</style>"
+        ],
+        "description": "vue template"
+    },
+    "component": {
+        "prefix": "component",
+        "body": [
+            "<template>",
+            "  <div></div>",
+            "</template>",
+            "",
+            "<script setup lang=\"ts\">",
+            "/**",
+            "* @name 组件名称",
+            "* 组件暴露的方法",
+            "* @emit emitName    方法名称",
+            "*/",
+            "import { onMounted, ref } from 'vue'",
+            "onMounted(() => {})",
+            "</script>",
+            "",
+            "<style lang=\"scss\" scoped>",
+            "",
+            "</style>"
+        ],
+        "description": "vue component template"
+    }
+}

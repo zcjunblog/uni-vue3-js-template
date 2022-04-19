@@ -1,0 +1,23 @@
+// 全局公共样式
+html,
+body,
+page {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+// 点击穿透
+.no-touch {
+    pointer-events: none;
+}
+
+// 点击 触感透明度
+.hover-class-opacity {
+    opacity: 0.7;
+}
+
+// PC鼠标指针类型
+.cursor {
+    cursor: pointer;
+}

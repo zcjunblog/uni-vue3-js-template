@@ -1,0 +1,20 @@
+/* mixin 该文件将不会被编译成css */
+
+// 底部安全区域
+@mixin safe-area-bottom {
+    padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+    padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+}
+
+// 多行文本省略
+@mixin text-overflow($line: 3) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+}
+
+// all 动画过渡
+@mixin transition-all($s: 0.6s) {
+    transition: all $s;
+}

@@ -1,0 +1,45 @@
+{
+    "name": "uni-preset-vue",
+    "version": "0.0.0",
+    "scripts": {
+        "serve": "npm run bootstrap && npm run dev",
+        "bootstrap": "yarn || npm i",
+        "dev": "uni --mode development -p mp-weixin",
+        "sit": "uni --mode sit -p mp-weixin",
+        "uat": "uni --mode uat -p mp-weixin",
+        "pro": "uni --mode production -p mp-weixin",
+        "build:dev": "uni build --mode development -p mp-weixin",
+        "build:sit": "uni build --mode sit -p mp-weixin",
+        "build:uat": "uni build --mode uat -p mp-weixin",
+        "build": "uni build --mode production -p mp-weixin"
+    },
+    "dependencies": {
+        "@dcloudio/uni-app": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-app-plus": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-components": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-h5": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-mp-alipay": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-mp-baidu": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-mp-kuaishou": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-mp-lark": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-mp-qq": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-mp-toutiao": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-mp-weixin": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-quickapp-webview": "^3.0.0-alpha-3030820220114004",
+        "vue": "^3.2.27",
+        "vue-i18n": "^9.1.9",
+        "vuex": "^4.0.2",
+        "await-to-js": "^3.0.0",
+        "sass": "^1.49.7",
+        "vuex-persistedstate": "^4.1.0"
+    },
+    "devDependencies": {
+        "@dcloudio/types": "^2.5.16",
+        "@dcloudio/uni-automator": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/uni-cli-shared": "^3.0.0-alpha-3030820220114004",
+        "@dcloudio/vite-plugin-uni": "^3.0.0-alpha-3030820220114004",
+        "autoprefixer": "^10.4.2",
+        "vite": "^2.7.13",
+        "husky": "^7.0.4"
+    }
+}
