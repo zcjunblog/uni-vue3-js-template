@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-02-14 11:36:04
  * @LastEditors: zhaozc
- * @LastEditTime: 2022-04-19 18:29:07
+ * @LastEditTime: 2022-04-20 09:25:17
  * @FilePath: \uni-vue3-js-template\src\pages\demo\index.vue
 -->
 <template>
@@ -23,8 +23,7 @@
             </u-col>
             <u-col span="4"></u-col>
             <u-col span="4">
-                <!-- <u-button @click="mapListShow = true">打开地图</u-button> -->
-                <u-button @click="openMap">打开地图</u-button>
+                <u-button></u-button>
             </u-col>
         </u-row>
         <u-row gutter="16">
@@ -52,25 +51,9 @@
         <u-picker v-model="show" mode="time"></u-picker>
 
         <view class="text-area">
-            <text class="title no-touch">{{ title }}, 当前为: {{ $tools.isMobile() ? '移动端' : 'PC端' }}</text>
+            <text class="title no-touch">{{ title }}</text>
         </view>
-        <view class="content">媒体查询示例 960px以下变色</view>
         <view v-for="item in area" :key="item.area_id">{{ item.city_name }}</view>
-        <!-- 地图选择组件 -->
-        <match-media :max-width="960">
-            <u-select v-model="mapListShow" :list="mapApplist" @confirm="selectedMapConfirm"></u-select>
-        </match-media>
-        <match-media :min-width="960">
-            <u-modal v-model="mapListShow" confirm-text="立即前往" title="选择地图演示" width="800" @confirm="selectedMapConfirm">
-                <view class="slot-content">
-                    <u-radio-group v-model="selectedMapType">
-                        <u-radio v-for="(item, index) in mapApplist" :key="index" :name="item.value">
-                            {{ item.label }}
-                        </u-radio>
-                    </u-radio-group>
-                </view>
-            </u-modal>
-        </match-media>
     </Layout>
 </template>
 
@@ -79,13 +62,10 @@ import { onMounted, ref } from 'vue'
 import Api from '@/api/index'
 import to from 'await-to-js'
 import useCurrentInstance from '@/hooks/useCurrentInstance'
-import { useRoute } from 'vue-router'
 const { $vuex, $tools, $staticUrl } = useCurrentInstance()
 console.log('useCurrentInstance()', useCurrentInstance())
 console.log('$staticUrl', $staticUrl)
-const route = useRoute()
 // 路由信息
-console.log('route.query', route.query)
 let title = 'Hello'
 let show = ref(false)
 let count = ref(0)
@@ -116,26 +96,6 @@ const showToast = () => {
     console.log($tools)
 
     $tools.showToast('这 是 toast')
-}
-// 地图demo
-const mapListShow = ref(false)
-const selectedMapType = ref('1')
-const mapApplist = [
-    {
-        value: '0',
-        label: '高德地图'
-    },
-    {
-        value: '1',
-        label: '腾讯地图'
-    },
-    {
-        value: '2',
-        label: '百度地图'
-    }
-]
-const openMap = () => {
-    openGMap()
 }
 
 onMounted(() => {})

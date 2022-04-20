@@ -1,12 +1,11 @@
 /*
  * @Date: 2022-02-21 16:55:20
  * @LastEditors: zhaozc
- * @LastEditTime: 2022-04-19 17:14:12
+ * @LastEditTime: 2022-04-20 09:24:09
  * @FilePath: \uni-vue3-js-template\src\utils\tools.js
  */
 import $vuex from '@/store/store.utils'
 import { $u } from '@/uni_modules/uview-ui/index'
-import { useRoute } from 'vue-router'
 export default {
     showToast(title = '加载中...', config = {}) {
         let option = Object.assign(
