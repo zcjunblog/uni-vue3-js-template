@@ -1,8 +1,9 @@
 /*
  * @Date: 2022-02-15 14:56:05
  * @LastEditors: zhaozc
- * @LastEditTime: 2022-04-19 17:41:56
+ * @LastEditTime: 2022-06-09 16:42:22
  * @FilePath: \uni-vue3-js-template\src\api\request.js
+ * @Description: 默认请求器
  */
 
 import showLoading from './loading'
@@ -36,20 +37,18 @@ const RequestMethod = (
         loadingBox = showLoading()
     }
 
-    // 请求头加上channel_id(写死为8)、user_agent(根据url返回参数channel_code动态获取)，这两个参数值均与后端沟通过
-    header['channel_id'] = 8
-    header['user_agent'] = $vuex.get('channel_code')
+    // 请求头加上channel_id(写死)、user_agent(写死)
+    header['channel_id'] = 11 // 渠道id
+    header['user_agent'] = 3 // 3 - 小程序
 
-    const location = $vuex.get('$user.userLocation')
+    const location = $vuex.get('$location.userLocation.ad_info.location')
     // 请求头加上位置信息
-    if (location && location.usrLon) {
-        header['lng'] = location.usrLon // 经度
-        header['lat'] = location.usrLat // 纬度
+    if (location) {
+        header['lng'] = location.lng // 经度
+        header['lat'] = location.lat // 纬度
     }
-    // 灰度版本号
-    header['api-version'] = import.meta.env.VITE_HD_VERSION
     // 携带token
-    const token = $vuex.get('token')
+    const token = $vuex.get('$user.token')
     if (token) {
         header['Authorization'] = 'Bearer' + ' ' + token
     }
@@ -73,16 +72,16 @@ const RequestMethod = (
             // 成功
             success: res => {
                 //返回数据
-                const { statusCode: status, data } = res
+                const { statusCode: status } = res
                 switch (status) {
                     case 400:
                         reject(res)
                         errTip && tools.showToast(res.data.message)
                         break
                     case 401:
-                        errTip && tools.showToast('会话结束，请重新提交问诊')
                         //  跳转登录页
-                        tools.toIndex()
+                        handleLogin()
+                        reject(res)
                         break
                     case 500:
                         reject(res)
@@ -101,6 +100,8 @@ const RequestMethod = (
                             `%c ${methodType} ${url} %c 请求返回===> `,
                             'background: #606060; color: #fff; border-radius: 3px 0 0 3px;',
                             'background: #1475B2; color: #fff; border-radius: 0 3px 3px 0;',
+                            res.data,
+                            '参数===>',
                             data
                         )
                         break
@@ -130,24 +131,34 @@ const RequestMethod = (
     })
 }
 
-//get请求
-export const get = (url, data, config) =>
-    RequestMethod(
-        {
-            methodType: 'GET',
-            url: url,
-            data
-        },
-        config
-    )
+// 跳转登录页
+let isToLogin = true // 解决重复跳转
+const handleLogin = async () => {
+    if (isToLogin) {
+        // 清除用户登录态
+        isToLogin = false
+        tools.clearUserData()
+        tools.toLogin('replace')
+        await tools.sleep(3000)
+        // 3s内不再跳转
+        isToLogin = true
+    }
+}
 
-//post请求
-export const post = (url, data, config) =>
-    RequestMethod(
-        {
-            methodType: 'POST',
-            url: url,
-            data
-        },
-        config
-    )
+// 创建请求
+const request = (url, data, config, methodType) => {
+    const params = { methodType, url, data }
+    if ($vuex.get('$user.token')) {
+        return RequestMethod(params, config)
+    }
+    // 如果没有token，则调一次查询用户登录态接口
+    return $vuex.dispatch('$user/checkLogin').then(() => {
+        return RequestMethod(params, config)
+    })
+}
+
+// get请求
+export const get = (url, data, config) => request(url, data, config, 'GET')
+
+// post请求
+export const post = (url, data, config) => request(url, data, config, 'POST')

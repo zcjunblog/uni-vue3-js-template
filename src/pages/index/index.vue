@@ -1,12 +1,12 @@
 <!--
  * @Date: 2022-02-14 11:36:04
  * @LastEditors: zhaozc
- * @LastEditTime: 2022-04-19 17:36:56
+ * @LastEditTime: 2022-06-09 16:46:10
  * @FilePath: \uni-vue3-js-template\src\pages\index\index.vue
 -->
 <template>
     <Layout>
-        <u-button @click="$u.route('/pages/demo/index')">路由跳转</u-button>
+        <u-button @click="$router.push('/pages/demo/index')">路由跳转</u-button>
     </Layout>
 </template>
 

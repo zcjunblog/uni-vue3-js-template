@@ -1,12 +1,13 @@
 /*
  * @Date: 2022-04-19 16:22:33
  * @LastEditors: zhaozc
- * @LastEditTime: 2022-04-19 18:15:15
+ * @LastEditTime: 2022-06-09 16:45:02
  * @FilePath: \uni-vue3-js-template\src\main.js
  */
 import { createSSRApp } from 'vue'
 import App from './App.vue'
 import $vuex from './store/store.utils'
+import $router from './utils/router'
 import uView from './uni_modules/uview-ui'
 import tools from './utils/tools'
 import directive from './directive'
@@ -19,7 +20,7 @@ export function createApp() {
     directive(app)
     app.config.globalProperties.$tools = tools // 业务方法
     app.config.globalProperties.$vuex = $vuex // vuex方法
-    app.config.globalProperties.$staticUrl = import.meta.env.VITE_APP_STATICURL // 网络图片 云存储域名
+    app.config.globalProperties.$router = $router // router方法
     return {
         app
     }
